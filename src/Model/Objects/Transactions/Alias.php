@@ -9,6 +9,7 @@ use Tpay\OpenApi\Model\Fields\Alias\Value;
 use Tpay\OpenApi\Model\Fields\Boolean;
 use Tpay\OpenApi\Model\Objects\Objects;
 use Tpay\OpenApi\Model\Objects\Transactions\Alias\Autopayment;
+use Tpay\OpenApi\Model\Fields\Alias\RecommendedAuthLevel;
 
 class Alias extends Objects
 {
@@ -19,6 +20,7 @@ class Alias extends Objects
         'key' => Key::class,
         'autopayment' => Autopayment::class,
         'noDelay' => Boolean::class,
+        'recommendedAuthLevel' => RecommendedAuthLevel::class,
     ];
 
     /** @var Value */
@@ -38,6 +40,9 @@ class Alias extends Objects
 
     /** @var \Tpay\OpenApi\Model\Fields\Boolean */
     public $noDelay;
+
+    /** @var RecommendedAuthLevel */
+    public $recommendedAuthLevel;
 
     public function getRequiredFields()
     {
