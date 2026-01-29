@@ -6,6 +6,8 @@ use Tpay\OpenApi\Model\Objects\NotificationBody\BasicPayment;
 use Tpay\OpenApi\Model\Objects\NotificationBody\MarketplaceTransaction;
 use Tpay\OpenApi\Model\Objects\NotificationBody\Tokenization;
 use Tpay\OpenApi\Model\Objects\NotificationBody\TokenUpdate;
+use Tpay\OpenApi\Model\Objects\NotificationBody\AliasRegister;
+use Tpay\OpenApi\Model\Objects\NotificationBody\AliasUnregister;
 use Tpay\OpenApi\Model\Objects\Objects;
 use Tpay\OpenApi\Utilities\CacheCertificateProvider;
 use Tpay\OpenApi\Utilities\CertificateProvider;
@@ -188,10 +190,23 @@ class JWSVerifiedPaymentNotification extends Notification
             $source = $jsonData['data'];
         } else {
             $source = $this->requestParser->getParsedContent();
-            if (!isset($source['tr_id'])) {
+            if(isset($source['event'])) {
+                switch($source['event']) {
+                    case 'ALIAS_REGISTER':
+                        $requestBody = new AliasRegister();
+                        break;
+                    case 'ALIAS_UNREGISTER':
+                        $requestBody = new AliasUnregister();
+                        break;
+                    default:
+                        throw new TpayException('Not recognised or invalid notification type. POST: '.json_encode($source));
+                }
+                $source = $source['msg_value'];
+            } else if (isset($source['tr_id'])) {
+                $requestBody = new BasicPayment();
+            } else {
                 throw new TpayException('Not recognised or invalid notification type. POST: '.json_encode($source));
             }
-            $requestBody = new BasicPayment();
         }
         foreach ($source as $parameter => $value) {
             if (isset($requestBody->{$parameter})) {
