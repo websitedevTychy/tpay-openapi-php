@@ -10,5 +10,5 @@ use Tpay\OpenApi\Model\Fields\Field;
 class SkipSendingEmails extends Field
 {
     protected $name = __CLASS__;
-    protected $type = self::BOOLEAN;
+    protected $type = self::BOOL;
 }
