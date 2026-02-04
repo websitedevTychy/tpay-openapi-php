@@ -1,6 +1,6 @@
 <?php
 
-namespace Tpay\OpenApi\Api\Transactions;
+namespace Tpay\OpenApi\Api\Aliases;
 
 use Tpay\OpenApi\Api\ApiAction;
 use Tpay\OpenApi\Model\Objects\RequestBody\AliasType;
