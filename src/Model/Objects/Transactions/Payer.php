@@ -10,6 +10,7 @@ use Tpay\OpenApi\Model\Fields\Payer\IP;
 use Tpay\OpenApi\Model\Fields\Payer\Name;
 use Tpay\OpenApi\Model\Fields\Payer\TaxId;
 use Tpay\OpenApi\Model\Fields\Payer\UserAgent;
+use Tpay\OpenApi\Model\Fields\Payer\SkipSendingEmails;
 use Tpay\OpenApi\Model\Fields\Person\Email;
 use Tpay\OpenApi\Model\Fields\Transaction\Country;
 use Tpay\OpenApi\Model\Objects\Objects;
@@ -27,6 +28,7 @@ class Payer extends Objects
         'taxId' => TaxId::class,
         'ip' => IP::class,
         'userAgent' => UserAgent::class,
+        'skipSendingEmails' => SkipSendingEmails::class,
     ];
 
     /** @var Email */
@@ -58,6 +60,9 @@ class Payer extends Objects
 
     /** @var UserAgent */
     public $userAgent;
+
+    /** @var SkipSendingEmails */
+    public $skipSendingEmails;
 
     public function getRequiredFields()
     {
