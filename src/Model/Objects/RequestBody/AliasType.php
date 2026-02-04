@@ -2,16 +2,16 @@
 
 namespace Tpay\OpenApi\Model\Objects\RequestBody;
 
-use Tpay\OpenApi\Model\Fields\Alias\AliasType as AliasTypeField;
+use Tpay\OpenApi\Model\Fields\Alias\Type;
 use Tpay\OpenApi\Model\Objects\Objects;
 
 class AliasType extends Objects
 {
     const OBJECT_FIELDS = [
-        'aliasType' => AliasTypeField::class,
+        'aliasType' => Type::class,
     ];
 
-    /** @var AliasTypeField */
+    /** @var Type */
     public $aliasType;
 
     public function getRequiredFields()
