@@ -5,7 +5,7 @@ namespace Tpay\OpenApi\Api\Transactions;
 use Tpay\OpenApi\Api\ApiAction;
 use Tpay\OpenApi\Model\Objects\RequestBody\AliasType;
 
-class TransactionsApi extends ApiAction
+class AliasesApi extends ApiAction
 {
     /**
      * @param string $token
