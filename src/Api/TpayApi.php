@@ -10,6 +10,7 @@ use Tpay\OpenApi\Api\Refunds\RefundsApi;
 use Tpay\OpenApi\Api\Reports\ReportsApi;
 use Tpay\OpenApi\Api\Transactions\TransactionsApi;
 use Tpay\OpenApi\Api\Aliases\AliasesApi;
+use Tpay\OpenApi\Api\Tokens\TokensApi;
 use Tpay\OpenApi\Model\Objects\Authorization\Token;
 use Tpay\OpenApi\Utilities\Cache;
 use Tpay\OpenApi\Utilities\TpayException;
@@ -36,6 +37,9 @@ class TpayApi
 
     /** @var null|AliasesApi */
     private $aliases;
+
+    /** @var null|TokensApi */
+    private $tokens;
 
     /** @var null|Token */
     private $token;
@@ -187,6 +191,16 @@ class TpayApi
         }
 
         return $this->aliases;
+    }
+
+    /** @return TokensApi */
+    public function tokens()
+    {
+        $this->authorize();
+        if (null === $this->tokens) {
+            $this->tokens = (new TokensApi($this->token, $this->productionMode))
+                ->overrideApiUrl($this->apiUrl);
+        }
     }
 
     /** @return CollectApi */
