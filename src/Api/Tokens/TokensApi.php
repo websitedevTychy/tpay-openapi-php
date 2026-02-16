@@ -10,11 +10,11 @@ class TokensApi extends ApiAction
     /**
      * @param string $token
      */
-    public function createToken($token)
+    public function createToken($fields)
     {
         $requestUrl = sprintf('/tokens');
 
-        return $this->run(static::POST, $requestUrl, [], new Token());
+        return $this->run(static::POST, $requestUrl, $fields, new Token());
     }
 
     /**

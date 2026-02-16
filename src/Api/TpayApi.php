@@ -201,6 +201,8 @@ class TpayApi
             $this->tokens = (new TokensApi($this->token, $this->productionMode))
                 ->overrideApiUrl($this->apiUrl);
         }
+
+        return $this->tokens;
     }
 
     /** @return CollectApi */

@@ -3,17 +3,17 @@
 namespace Tpay\OpenApi\Model\Objects\RequestBody;
 
 use Tpay\OpenApi\Model\Fields\CardToken\CallbackUrl;
-use Tpay\OpenApi\Model\Fields\CardToken\RedirectUrl;
 use Tpay\OpenApi\Model\Fields\CardToken\Card;
 use Tpay\OpenApi\Model\Objects\Objects;
 use Tpay\OpenApi\Model\Objects\Transactions\Payer;
+use Tpay\OpenApi\Model\Objects\Transactions\CallbacksPayerUrls;
 
 class Token extends Objects
 {
     const OBJECT_FIELDS = [
         'payer' => Payer::class,
         'callbackUrl' => CallbackUrl::class,
-        'redirectUrl' => RedirectUrl::class,
+        'redirectUrl' => CallbacksPayerUrls::class,
         'card' => Card::class,
     ];
 
